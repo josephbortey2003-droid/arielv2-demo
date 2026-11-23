@@ -261,6 +261,74 @@ footer .small { font-size: 13.5px; text-align: right; line-height: 1.8; }
   .aura i { opacity: .38; filter: blur(60px); }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .rv, .big-name span { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+
+/* ===== V2.1 after study of personal-brand sites (Marie Forleo etc.): cut-out portrait on CRISP colour blocks,
+   near-black readable text, display serif only for big headings, dark "as seen on" band ===== */
+.aura { display: none; }
+body { font-size: 18px; color: #1f1825; background: var(--cream); }
+:root { --mute: #463e4e; }
+.cover { background: linear-gradient(120deg, #eadcf7 0%, #f3ecfa 38%, #e2f1e7 72%, #d6ebdd 100%); background-size: 180% 180%; animation: shift 18s ease-in-out infinite alternate; padding-block: 34px 0; overflow: hidden; }
+@keyframes shift { to { background-position: 100% 100%; } }
+.cover .wrap { align-items: end; }
+.issue { color: var(--forest); font-size: 12.5px; border-bottom-color: rgba(36,84,63,.25); }
+.big-name { margin-bottom: -10.5vw; color: var(--plum); white-space: nowrap; }
+.portrait { align-self: end; }
+.portrait::before { display: none; }
+.portrait img { aspect-ratio: auto; object-fit: contain; box-shadow: none; filter: drop-shadow(0 30px 40px rgba(75,31,111,.22)); width: 100%; height: auto; margin-bottom: -2px; }
+.lines-l, .lines-r { padding-bottom: 60px; gap: 30px; }
+.cl small { font-size: 12.5px; color: #8a6418; letter-spacing: .18em; }
+.cl p { font: 500 19px/1.45 var(--sans); color: #1f1825; }
+.cl p.it { font: italic 500 25px/1.3 var(--display); color: var(--plum); }
+.cover .actions { grid-column: auto; justify-content: flex-start; margin-top: 4px; gap: 18px; }
+.press { background: var(--plum); border: 0; }
+.press span { color: #fff; font: italic 500 24px/1 var(--display); }
+.press b { color: var(--gold); font-size: 12px; }
+.label { font-size: 13px; color: var(--forest); }
+.lede { color: #3a3242; font-size: 19.5px; }
+.about { background: var(--cream); }
+.dropcap { color: #2a2230 !important; }
+.pull { font-weight: 500; }
+.pull cite, .about .ph figcaption { color: var(--forest); font-size: 12.5px; }
+.roles span { font-size: 14.5px; font-weight: 600; }
+.breathe p { color: #efe4f7; font-size: 19px; }
+.svc { background: #e8f2eb; }
+.item h3 { font-weight: 600; }
+.item p { color: #3a3242; font-size: 17.5px; }
+.item .n { color: #a77a24; font-weight: 500; }
+.tlink { font-size: 13.5px; }
+.guide { background: #f1e8f9 !important; }
+.stage h3 { font-weight: 600; } .stage p { color: #3a3242; font-size: 17px; }
+.stage .n { color: #a77a24; }
+.pillars b { font-weight: 600; font-size: 23px; }
+.pillars span { color: #3a3242; font-size: 16px; }
+.series { font-weight: 500; }
+.series small { color: #3a3242; font-size: 16px; }
+.ev { background: var(--cream); }
+.ev figcaption { color: #3a3242; font-size: 12.5px; }
+.fest p { color: #f0e6f8; font-size: 17.5px; }
+.watch { background: #e8f2eb; }
+.contact { background: linear-gradient(150deg, #f1e8f9 0%, #fbf8f4 50%, #e8f2eb 100%) !important; }
+.clinks a { font: 500 19px/1.3 var(--sans); }
+.clinks a small { color: var(--forest); font-size: 12px; }
+.field label { color: var(--forest); font-size: 12px; }
+.field input, .field select, .field textarea { border-bottom-color: rgba(75,31,111,.45); color: #1f1825; }
+.picked { color: #3a3242; }
+@media (max-width: 1020px) {
+  .cover { padding-top: 24px; }
+  .big-name { margin-bottom: -18vw !important; }
+  .portrait { max-width: 430px; }
+  .lines-l { padding-bottom: 20px; margin-top: 30px; }
+  .lines-r { padding-bottom: 50px; }
+  .cover .actions { order: 4 !important; }
+}
+@media (max-width: 640px) {
+  body { font-size: 17.5px; }
+  .big-name { font-size: 24vw; letter-spacing: .015em; margin-right: 0; white-space: nowrap; margin-bottom: -9vw !important; }
+  .portrait { max-width: 92%; }
+  .cl p.it { font-size: 23px; }
+  .press span { font-size: 21px; }
+  .issue { font-size: 11px; letter-spacing: .16em; white-space: nowrap; }
+}
 </style>
 <style>body{margin:0}</style>
 </head>
@@ -297,13 +365,13 @@ footer .small { font-size: 13.5px; text-align: right; line-height: 1.8; }
   <div class="lines-l rv">
     <div class="cl"><small>The menopause conversation</small><p class="it">"Embrace it, accept it, and go through it."</p></div>
     <div class="cl"><small>Certified coach</small><p>Wellness &amp; menopause coaching for women, families and workplaces</p></div>
+    <div class="actions"><a class="cta" href="#contact">Book a session</a><a class="tlink" href="https://forms.gle/uoFoH32iKmQkkipt7" target="_blank" rel="noopener">Join the next Wellness Meet-Up</a></div>
   </div>
-  <div class="portrait rv"><img src="img/portrait.webp" alt="Olivia Ariel Mamle Donkor, Ariel – The Wellness Coach" width="1024" height="1280"></div>
+  <div class="portrait"><img src="img/cutout.webp" alt="Olivia Ariel Mamle Donkor, Ariel – The Wellness Coach" width="804" height="1100"></div>
   <div class="lines-r rv">
     <div class="cl"><small>Inside</small><p>Retreats · City escapes · Safaris · Masterclasses</p></div>
     <div class="cl"><small>Signature event</small><p class="it">The Womb-Pause Wellness Festival</p></div>
   </div>
-  <div class="actions rv"><a class="cta" href="#contact">Book a session</a><a class="tlink" href="https://forms.gle/uoFoH32iKmQkkipt7" target="_blank" rel="noopener">Join the next Wellness Meet-Up</a></div>
 </div></div>
 
 <div class="press" aria-label="As featured on"><div class="row">
