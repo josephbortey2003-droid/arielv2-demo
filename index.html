@@ -329,11 +329,57 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   .press span { font-size: 21px; }
   .issue { font-size: 11px; letter-spacing: .16em; white-space: nowrap; }
 }
+
+/* ===== backgrounds (user Nov 23): silk/satin gradients on hero + plum bands, fine paper grain on light sections,
+   faint Adinkra watermarks (Duafe = feminine beauty & care; Mmere Dane = "time changes") ===== */
+.cover { background:
+   radial-gradient(120% 80% at 12% 18%, rgba(255,255,255,.75) 0%, rgba(255,255,255,0) 42%),
+   radial-gradient(90% 70% at 88% 30%, rgba(247,214,226,.75) 0%, rgba(247,214,226,0) 55%),
+   radial-gradient(110% 90% at 70% 100%, rgba(199,228,210,.9) 0%, rgba(199,228,210,0) 60%),
+   linear-gradient(118deg, #e6d6f6 0%, #efe3f9 30%, #f6e9f1 52%, #e9efe9 76%, #d7eadf 100%) !important;
+   animation: none !important; }
+.silk { position: relative; isolation: isolate; }
+.silk::before { content: ""; position: absolute; inset: -20%; z-index: -1; pointer-events: none;
+   background: linear-gradient(115deg, transparent 0%, transparent 38%, rgba(255,255,255,.32) 46%, rgba(255,255,255,.06) 52%, transparent 60%, transparent 100%),
+               linear-gradient(115deg, transparent 0%, transparent 62%, rgba(255,255,255,.18) 68%, transparent 74%);
+   animation: sheen 14s ease-in-out infinite alternate; mix-blend-mode: soft-light; }
+@keyframes sheen { from { transform: translateX(-12%) rotate(0.001deg); } to { transform: translateX(12%); } }
+.cover.silk::before { mix-blend-mode: normal; opacity: .55; }
+.press, footer, .breathe, .fest { position: relative; isolation: isolate; }
+.press { background:
+   radial-gradient(70% 160% at 20% 0%, rgba(140,80,190,.55) 0%, transparent 60%),
+   radial-gradient(60% 160% at 85% 100%, rgba(36,84,63,.55) 0%, transparent 60%),
+   linear-gradient(100deg, #3f1a5e, #4b1f6f 45%, #3a1856) !important; }
+.breathe { background:
+   radial-gradient(70% 90% at 15% 20%, rgba(150,90,200,.45) 0%, transparent 60%),
+   radial-gradient(60% 80% at 90% 85%, rgba(60,130,95,.55) 0%, transparent 60%),
+   linear-gradient(135deg, #4b1f6f 0%, #331650 50%, #1f4a37 100%) !important; }
+.fest { background:
+   radial-gradient(80% 100% at 10% 10%, rgba(160,100,210,.5) 0%, transparent 60%),
+   radial-gradient(70% 90% at 95% 95%, rgba(60,130,95,.6) 0%, transparent 60%),
+   linear-gradient(135deg, #4b1f6f, #2f1449 60%, #24543f) !important; }
+footer { background:
+   radial-gradient(60% 120% at 10% 0%, rgba(120,60,170,.45) 0%, transparent 60%),
+   linear-gradient(120deg, #23122f, #1c1226 60%, #17271f) !important; }
+.grain { position: relative; }
+.grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .29 0 0 0 0 .2 0 0 0 0 .32 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: .09; }
+.grain > .wrap { position: relative; z-index: 1; }
+.adinkra { position: absolute; z-index: 0; pointer-events: none; color: var(--plum); opacity: .035; }
+.adinkra.duafe { width: min(520px, 60vw); right: -60px; bottom: 40px; }
+.adinkra.mmere { width: min(480px, 58vw); left: -70px; top: 60px; }
+.sym-note { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; font: 600 12px/1.4 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--forest); }
+.sym-note svg { width: 26px; height: 26px; color: var(--plum); }
+@media (max-width: 640px) { .adinkra { opacity: .03; } .adinkra.duafe { right: -90px; bottom: 10px; } .adinkra.mmere { left: -90px; top: 30px; } }
+@media (prefers-reduced-motion: reduce) { .silk::before { animation: none; } }
 </style>
 <style>body{margin:0}</style>
 </head>
 <body>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="duafe" viewBox="0 0 200 260"><g fill="currentColor"><path d="M100 8c-46 0-80 32-80 78 0 30 16 52 38 64h84c22-12 38-34 38-64 0-46-34-78-80-78zm0 26c30 0 52 22 52 52 0 18-8 32-20 40H68c-12-8-20-22-20-40 0-30 22-52 52-52z"/><path d="M100 54c-10 14-24 22-24 38 0 12 10 22 24 22s24-10 24-22c0-16-14-24-24-38z"/><rect x="22" y="152" width="156" height="28" rx="4"/><rect x="28" y="184" width="16" height="70" rx="5"/><rect x="56" y="184" width="16" height="70" rx="5"/><rect x="84" y="184" width="16" height="70" rx="5"/><rect x="112" y="184" width="16" height="70" rx="5"/><rect x="140" y="184" width="16" height="70" rx="5"/><rect x="160" y="184" width="16" height="70" rx="5" transform="translate(-4 0)"/></g></symbol>
+  <symbol id="mmere" viewBox="0 0 200 240"><g fill="currentColor"><rect x="10" y="6" width="180" height="22" rx="4"/><rect x="10" y="212" width="180" height="22" rx="4"/><path d="M28 34h144c0 46-38 66-58 86 20 20 58 40 58 86H28c0-46 38-66 58-86C66 100 28 80 28 34zm24 14c6 26 30 42 48 58 18-16 42-32 48-58zm0 144h96c-6-24-30-40-48-56-18 16-42 32-48 56z"/><circle cx="100" cy="120" r="7"/></g></symbol>
+</defs></svg>
 <div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="page">
 <div class="demo">Demo website made for Ariel – The Wellness Coach. Final details to be confirmed by you.</div>
@@ -359,7 +405,7 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   <div class="foot">WhatsApp <a href="https://wa.me/233243600899">024 360 0899</a> · <a href="https://www.instagram.com/arielthewellnesscoach/">Instagram</a> · <a href="https://www.facebook.com/Arielscoaching">Facebook</a></div>
 </div>
 
-<div class="cover" id="top"><div class="wrap">
+<div class="cover silk" id="top"><div class="wrap">
   <div class="issue"><span>Wellness · Menopause · Self-care</span><span>Accra, Ghana</span></div>
   <h1 class="big-name" aria-label="Ariel"><span>A</span><span>R</span><span>I</span><span>E</span><span>L</span></h1>
   <div class="lines-l rv">
@@ -379,13 +425,14 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   <b>As seen &amp; heard on</b><span>Joy Prime</span><span>Joy FM</span><span>JoyNews</span><span>Asaase Radio</span><span>MX24</span><span>MyJoyOnline</span>
 </div></div>
 
-<section class="about" id="about"><div class="wrap">
+<section class="about grain" id="about"><svg class="adinkra duafe" viewBox="0 0 200 260" aria-hidden="true"><use href="#duafe"/></svg><div class="wrap">
   <figure class="ph rv" style="margin:0"><img src="img/lace.webp" alt="Ariel – The Wellness Coach in a black lace dress" loading="lazy"><figcaption>Olivia Ariel Mamle Donkor · CEO, Ariel's Haven</figcaption></figure>
   <div class="rv">
     <p class="label">About Ariel</p>
     <h2>A life devoted to <span class="it">women's wellbeing.</span></h2>
     <p class="lede dropcap" style="margin-top:28px">Olivia Ariel Mamle Donkor is a certified wellness and menopause coach, the CEO of Ariel's Haven and the founder of the Ariel Wellness Club. Through coaching, community meet-ups, retreats and honest conversations on radio and television, she helps women understand their bodies and put their wellbeing first.</p>
     <blockquote class="pull">"Your journey is unique. No two women experience menopause in the exact same way."<cite>Ariel, on Joy Prime's Changes Show</cite></blockquote>
+    <span class="sym-note" style="margin:0 0 18px"><svg viewBox="0 0 200 260" aria-hidden="true"><use href="#duafe"/></svg>Duafe · Adinkra for feminine beauty, love &amp; care</span>
     <div class="roles"><span>Wellness Coach</span><span>Menopause Coach</span><span>Speaker</span><span>Wellness Activist</span></div>
   </div>
 </div></section>
@@ -400,7 +447,7 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   <div class="ring-wrap" aria-live="polite"><div class="ring" id="ring"><span id="rTxt">Ready</span></div><small id="rCount"></small></div>
 </div></section>
 
-<section class="svc" id="services"><div class="wrap">
+<section class="grain svc" id="services"><div class="wrap">
   <div class="side rv">
     <p class="label">Services</p>
     <h2>Ways to work <span class="it">with Ariel.</span></h2>
@@ -417,10 +464,10 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   </div>
 </div></section>
 
-<section class="guide" id="menopause"><div class="wrap">
+<section class="guide grain" id="menopause"><svg class="adinkra mmere" viewBox="0 0 200 240" aria-hidden="true"><use href="#mmere"/></svg><div class="wrap">
   <div class="head rv">
     <div><p class="label">A guide to menopause</p><h2>Not a disease. <span class="it">A stage to embrace.</span></h2></div>
-    <p class="lede">Previous generations often suffered in silence. Ariel's mission is to make menopause understood rather than feared, so every woman can prepare and thrive.</p>
+    <div><p class="lede" style="margin:0">Previous generations often suffered in silence. Ariel's mission is to make menopause understood rather than feared, so every woman can prepare and thrive.</p><span class="sym-note"><svg viewBox="0 0 200 240" aria-hidden="true"><use href="#mmere"/></svg>Mmere Dane · Adinkra for "time changes"</span></div>
   </div>
   <div class="stages">
     <div class="stage rv"><span class="n">i.</span><h3>Perimenopause</h3><p>The transition years, when changes begin and symptoms first appear.</p></div>
@@ -442,7 +489,7 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   </div>
 </div></section>
 
-<section class="ev" id="events"><div class="wrap">
+<section class="grain ev" id="events"><div class="wrap">
   <div class="rv"><p class="label">Events &amp; community</p><h2>Wellness is better <span class="it">together.</span></h2></div>
   <div class="grid">
     <figure class="a rv"><img src="img/walk.webp" alt="Women on a wellness walk" loading="lazy"><figcaption>QIC Go Girl Mega Wellness Meet-Up</figcaption></figure>
@@ -452,14 +499,14 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
   </div>
 </div></section>
 
-<section class="watch"><div class="wrap">
+<section class="grain watch"><div class="wrap">
   <button class="video rv" type="button" id="vid" aria-label="Play video: The need for healthy living through menopause">
     <img src="img/tv.webp" alt="" loading="lazy"><span class="play"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></i>Watch on Joy Prime</span>
   </button>
   <div class="rv"><p class="label">On television</p><h2>Healthy living through <span class="it">menopause.</span></h2><p class="lede" style="margin-top:18px">Ariel on Joy Prime, on the stages of menopause and the lifestyle changes that make the journey easier.</p></div>
 </div></section>
 
-<section class="contact" id="contact"><div class="wrap">
+<section class="grain contact" id="contact"><div class="wrap">
   <div class="rv">
     <p class="label">Contact</p>
     <h2>Begin your <span class="it">wellness journey.</span></h2>
