@@ -323,7 +323,8 @@ body { font-size: 18px; color: #1f1825; background: var(--cream); }
 }
 @media (max-width: 640px) {
   body { font-size: 17.5px; }
-  .big-name { font-size: 24vw; letter-spacing: .015em; margin-right: 0; white-space: nowrap; margin-bottom: -9vw !important; }
+  .big-name { font-size: 27.5vw; letter-spacing: -.01em; margin-right: 0; white-space: nowrap; margin-bottom: -11vw !important; margin-left: -2vw; margin-right: -2vw; }
+  .about .ph img { aspect-ratio: 7 / 5; object-position: 40% 30%; }
   .portrait { max-width: 92%; }
   .cl p.it { font-size: 23px; }
   .press span { font-size: 21px; }
@@ -371,6 +372,30 @@ footer { background:
 .sym-note svg { width: 26px; height: 26px; color: var(--plum); }
 @media (max-width: 640px) { .adinkra { opacity: .03; } .adinkra.duafe { right: -90px; bottom: 10px; } .adinkra.mmere { left: -90px; top: 30px; } }
 @media (prefers-reduced-motion: reduce) { .silk::before { animation: none; } }
+
+/* soft aura behind her cut-out portrait (user Nov 23) */
+.portrait { isolation: isolate; }
+.portrait::after { content: ""; position: absolute; z-index: -1; left: 50%; top: 46%; width: 115%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(246,226,240,.85) 24%, rgba(214,182,240,.55) 46%, rgba(201,154,59,.16) 62%, rgba(214,182,240,0) 72%);
+  animation: halo 7s ease-in-out infinite alternate; }
+@keyframes halo { from { transform: translate(-50%, -50%) scale(.96); opacity: .85; } to { transform: translate(-50%, -50%) scale(1.04); opacity: 1; } }
+@media (max-width: 640px) { .portrait::after { width: 130%; top: 44%; } }
+@media (prefers-reduced-motion: reduce) { .portrait::after { animation: none; } }
+
+/* ===== bug fixes (user Nov 23) ===== */
+html, body { overflow-x: clip; max-width: 100%; }
+section, .cover, .press, footer { overflow-x: clip; }
+.ev figure img { height: auto !important; }
+#book { scroll-margin-top: 96px; }
+/* menu: drop-down panel under the header, page dimmed behind (not full screen) */
+.overlay { inset: 0 0 auto 0 !important; height: auto !important; max-height: 86dvh; overflow-y: auto; border-radius: 0 0 26px 26px; padding: 18px 24px 26px !important; transform: translateY(-105%); box-shadow: 0 24px 60px rgba(28,18,38,.35); }
+.overlay nav { margin: 26px 0 22px !important; gap: 2px !important; }
+.overlay nav a { font-size: 27px !important; line-height: 1.2 !important; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+.overlay nav a:last-child { border-bottom: 0; }
+.scrim { position: fixed; inset: 0; z-index: 55; background: rgba(28,18,38,.45); opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s; }
+.menu-open .scrim { opacity: 1; visibility: visible; }
+@media (max-width: 1020px) { .contact form.book { order: -1; } }
 </style>
 <style>body{margin:0}</style>
 </head>
@@ -389,10 +414,11 @@ footer { background:
   <nav aria-label="Primary"><a href="#about">About</a><a href="#services">Services</a><a href="#menopause">Menopause</a></nav>
   <button class="menu-btn" type="button" id="openMenu" aria-label="Open menu" aria-expanded="false"><span><i></i><i></i><i></i></span>Menu</button>
   <a class="logo" href="#top" aria-label="Ariel – The Wellness Coach, home"><b>ARIEL</b><small>The Wellness Coach</small></a>
-  <nav class="r" aria-label="Secondary"><a href="#events">Events</a><a href="#contact">Contact</a><a class="book" href="#contact">Book</a></nav>
-  <a class="tlink mobook" href="#contact" style="display:none">Book</a>
+  <nav class="r" aria-label="Secondary"><a href="#events">Events</a><a href="#contact">Contact</a><a class="book" href="#book">Book</a></nav>
+  <a class="tlink mobook" href="#book" style="display:none">Book</a>
 </div></header>
 
+<div class="scrim" id="scrim"></div>
 <div class="overlay" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="top"><b>ARIEL</b><button type="button" id="closeMenu">Close ✕</button></div>
   <nav>
@@ -400,7 +426,7 @@ footer { background:
     <a href="#services"><span>02</span>Services</a>
     <a href="#menopause"><span>03</span>Menopause</a>
     <a href="#events"><span>04</span>Events</a>
-    <a href="#contact"><span>05</span>Book a session</a>
+    <a href="#book"><span>05</span>Book a session</a>
   </nav>
   <div class="foot">WhatsApp <a href="https://wa.me/233541517049">054 151 7049</a> · Call <a href="tel:+233243600899">024 360 0899</a> · <a href="https://www.instagram.com/arielthewellnesscoach/">Instagram</a> · <a href="https://www.facebook.com/Arielscoaching">Facebook</a></div>
 </div>
@@ -411,7 +437,7 @@ footer { background:
   <div class="lines-l rv">
     <div class="cl"><small>The menopause conversation</small><p class="it">"Embrace it, accept it, and go through it."</p></div>
     <div class="cl"><small>Certified coach</small><p>Wellness &amp; menopause coaching for women, families and workplaces</p></div>
-    <div class="actions"><a class="cta" href="#contact">Book a session</a><a class="tlink" href="https://forms.gle/uoFoH32iKmQkkipt7" target="_blank" rel="noopener">Join the next Wellness Meet-Up</a></div>
+    <div class="actions"><a class="cta" href="#book">Book a session</a><a class="tlink" href="https://forms.gle/uoFoH32iKmQkkipt7" target="_blank" rel="noopener">Join the next Wellness Meet-Up</a></div>
   </div>
   <div class="portrait"><img src="img/cutout.webp" alt="Olivia Ariel Mamle Donkor, Ariel – The Wellness Coach" width="804" height="1100"></div>
   <div class="lines-r rv">
@@ -537,7 +563,7 @@ footer { background:
 </div></footer>
 </div>
 
-<div class="bar"><a class="main" href="#contact">Book a session →</a><a class="wa" href="https://wa.me/233541517049" aria-label="WhatsApp Ariel"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.1.1.7-.2 1.4z"/></svg></a></div>
+<div class="bar"><a class="main" href="#book">Book a session →</a><a class="wa" href="https://wa.me/233541517049" aria-label="WhatsApp Ariel"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.2.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.4.1.1.1.7-.2 1.4z"/></svg></a></div>
 
 <script>
 (() => {
@@ -546,11 +572,12 @@ footer { background:
 
   // menu
   const menu = document.getElementById('menu'), ob = document.getElementById('openMenu');
-  const close = () => { document.body.classList.remove('menu-open'); menu.classList.remove('open'); ob.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
-  ob.onclick = () => { document.body.classList.add('menu-open'); menu.classList.add('open'); ob.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; };
+  const close = () => { document.body.classList.remove('menu-open'); menu.classList.remove('open'); ob.setAttribute('aria-expanded', 'false'); };
+  ob.onclick = () => { document.body.classList.add('menu-open'); menu.classList.add('open'); ob.setAttribute('aria-expanded', 'true'); };
   document.getElementById('closeMenu').onclick = close;
   menu.querySelectorAll('nav a').forEach(a => a.onclick = close);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  document.getElementById('scrim').onclick = close;
 
   // breathing
   const ring = document.getElementById('ring'), t = document.getElementById('rTxt'), c = document.getElementById('rCount'), b = document.getElementById('bStart');
