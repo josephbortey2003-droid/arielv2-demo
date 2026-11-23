@@ -396,6 +396,20 @@ section, .cover, .press, footer { overflow-x: clip; }
 .scrim { position: fixed; inset: 0; z-index: 55; background: rgba(28,18,38,.45); opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s; }
 .menu-open .scrim { opacity: 1; visibility: visible; }
 @media (max-width: 1020px) { .contact form.book { order: -1; } }
+
+/* phone masthead: justified edge-to-edge like a magazine cover (user Nov 23) */
+@media (max-width: 640px) {
+  .cover { padding-top: 18px; }
+  .issue { margin-bottom: 22px !important; padding-bottom: 12px; justify-content: center; }
+  .big-name { display: flex !important; justify-content: space-between; align-items: flex-end; width: 100%; margin: 0 0 -9.5vw 0 !important; padding: 0; letter-spacing: 0 !important; font-size: 25.5vw !important; line-height: .78; }
+  .big-name span { display: block; }
+  .portrait { margin-left: auto; margin-right: auto; }
+}
+
+@media (max-width: 640px) {
+  .roles { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0; }
+  .roles span { margin: 0 !important; padding: 14px 10px 14px 0 !important; border-right: 0 !important; border-bottom: 1px solid var(--line); font-size: 13.5px !important; }
+}
 </style>
 <style>body{margin:0}</style>
 </head>
